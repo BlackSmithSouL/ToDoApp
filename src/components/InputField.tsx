@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './styles.css'
 
 type inputFieldProps = {
@@ -12,12 +12,19 @@ export const InputField: React.FunctionComponent<inputFieldProps> = ({
   setTodo,
   handleAdd
 }) => {
+
+  const inputRef = useRef<HTMLInputElement>(null)
+
   return (
     <form 
       className='input'
-      onSubmit={handleAdd}
+      onSubmit={(e) => {
+        handleAdd(e)
+        inputRef.current?.blur()
+      }}
     >
         <input 
+          ref={inputRef}
           value={todo}
           onChange={
             (e) => setTodo(e.target.value)
