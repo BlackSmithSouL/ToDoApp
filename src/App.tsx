@@ -14,7 +14,7 @@ export const App: React.FC = () => {
 
     if(todo) {
 
-      setTodos([...todos,{ id: Date.now(), todo, isDone: false }])
+      setTodos([...todos, { id: Date.now(), todo, isDone: false }])
       setTodo("")
     }
   }
@@ -31,9 +31,6 @@ export const App: React.FC = () => {
           todos={todos}
           setTodos={setTodos}
         />
-        {todos.map((t) =>(
-          <li>{t.todo}</li>
-        ))}
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { ToDo } from '../model'
+import { SingleToDo } from './SingleToDo'
 import './styles.css'
 
 type listProps = {
@@ -14,7 +15,12 @@ export const ToDoList: React.FC<listProps> = ({
   return (
     <div className='todos'>
         {todos.map((todo) => (
-            <li>{todo.todo}</li>
+            <SingleToDo 
+              todo={todo} 
+              key={todo.id}
+              todos={todos}
+              setTodos={setTodos}  
+            />
         ))}
     </div>
   )

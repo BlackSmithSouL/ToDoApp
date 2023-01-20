@@ -2,9 +2,9 @@ import React, { useRef } from 'react'
 import './styles.css'
 
 type inputFieldProps = {
-  todo: string,
-  setTodo(): void,
-  handleAdd(e: React.FormEvent): void
+  todo: string;
+  setTodo(): React.Dispatch<React.SetStateAction<string>>;
+  handleAdd: (e: React.FormEvent) => void;
 }
 
 export const InputField: React.FunctionComponent<inputFieldProps> = ({
