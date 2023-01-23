@@ -13,15 +13,37 @@ export const ToDoList: React.FC<listProps> = ({
     setTodos
 }) => {
   return (
-    <div className='todos'>
-        {todos.map((todo) => (
+    <div className="container">
+      <div className="todos">
+        <span className="todos__heading">
+          Active Tasks
+        </span>
+        {
+          todos.map((todo) => (
             <SingleToDo 
-              todo={todo} 
-              key={todo.id}
+              todo={todo}
               todos={todos}
-              setTodos={setTodos}  
+              key={todo.id}
+              setTodos={setTodos}
             />
-        ))}
+          ))
+        }
+      </div>
+      <div className="todos remove">
+        <span className="todos__heading">
+          Completed Tasks
+        </span>
+        {
+          todos.map((todo) => (
+            <SingleToDo 
+              todo={todo}
+              todos={todos}
+              key={todo.id}
+              setTodos={setTodos}
+            />
+          ))
+        }
+      </div>
     </div>
   )
 }
