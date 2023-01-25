@@ -4,14 +4,17 @@ import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
 import "./styles.css"
 import { ToDoList } from './ToDoList'
+import { Draggable } from 'react-beautiful-dnd'
 
 type singleTodoProps = {
+  index: number;
   todo: ToDo,
   todos: ToDo[],
   setTodos:React.Dispatch<React.SetStateAction<ToDo[]>>
 }
 
 export const SingleToDo = ({
+  index,
   todo,
   todos,
   setTodos
@@ -42,12 +45,21 @@ export const SingleToDo = ({
   useEffect(() => {
     inputRef.current?.focus()
   }, [edit])
-  
+ 
   return (
-    <form 
-      className='todos__single'
-      onSubmit={(e) => handleEdit(e, todo.id)}  
+    <Draggable 
+      draggableId={todo.id.toString()}
+      index={index}  
     >
+    {
+      (provided) => (
+        <form 
+          className='todos__single'
+          onSubmit={(e) => handleEdit(e, todo.id)} 
+          {...provided.draggableProps} 
+          {...provided.dragHandleProps} 
+          ref={provided.innerRef}
+        >
       {
         edit ? (
           <input 
@@ -92,6 +104,9 @@ export const SingleToDo = ({
             <MdDone />
           </span>
         </div>
-    </form>
+      </form>
+        )
+      }
+    </Draggable>
   )
 }

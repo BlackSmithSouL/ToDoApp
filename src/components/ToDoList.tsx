@@ -31,8 +31,9 @@ export const ToDoList: React.FC<listProps> = ({
               Active Tasks
             </span>
             {
-              todos.map((todo) => (
+              todos.map((todo, index) => (
                 <SingleToDo 
+                  index={index}
                   todo={todo}
                   todos={todos}
                   key={todo.id}
@@ -40,6 +41,7 @@ export const ToDoList: React.FC<listProps> = ({
                 />
               ))
             }
+            {provided.placeholder}
             </div>
           )
         }
@@ -58,6 +60,7 @@ export const ToDoList: React.FC<listProps> = ({
             {
             completedTodos.map((todo) => (
               <SingleToDo 
+                index={index}
                 todo={todo}
                 todos={completedTodos}
                 key={todo.id}
@@ -65,6 +68,7 @@ export const ToDoList: React.FC<listProps> = ({
               />
             ))
             }
+            {provided.placeholder}
             </div>
           )
         }
