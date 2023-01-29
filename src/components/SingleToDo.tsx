@@ -3,13 +3,12 @@ import { ToDo } from '../model'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
 import "./styles.css"
-import { ToDoList } from './ToDoList'
 import { Draggable } from 'react-beautiful-dnd'
 
 type singleTodoProps = {
   index: number;
   todo: ToDo,
-  todos: ToDo[],
+  todos: Array<ToDo>,
   setTodos:React.Dispatch<React.SetStateAction<ToDo[]>>
 }
 

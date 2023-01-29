@@ -7,7 +7,7 @@ type inputFieldProps = {
   handleAdd: (e: React.FormEvent) => void;
 }
 
-export const InputField: React.FunctionComponent<inputFieldProps> = ({
+export const InputField: React.FC<inputFieldProps> = ({
   todo,
   setTodo,
   handleAdd

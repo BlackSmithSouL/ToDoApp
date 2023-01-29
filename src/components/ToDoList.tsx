@@ -5,8 +5,8 @@ import { SingleToDo } from './SingleToDo'
 import './styles.css'
 
 type listProps = {
-    todos:ToDo[],
-    setTodos:React.Dispatch<React.SetStateAction<ToDo[]>>
+    todos: ToDo[],
+    setTodos: React.Dispatch<React.SetStateAction<ToDo[]>>
     completedTodos: ToDo[]
     setCompletedTodos: React.Dispatch<React.SetStateAction<ToDo[]>>
 }
@@ -20,18 +20,16 @@ export const ToDoList: React.FC<listProps> = ({
   return (
     <div className="container">
       <Droppable droppableId='TodosList'>
-        {
-          (provided, snapshot) => (
+        {( provided, snapshot) => (
             <div 
-              className={`todos ${snapshot.isDraggingOver? `dragactive` : ""}`} 
+              className={`todos ${snapshot.isDraggingOver ? `dragactive` : ""}`} 
               ref={provided.innerRef} 
               {...provided.droppableProps}
             >
             <span className="todos__heading">
               Active Tasks
             </span>
-            {
-              todos.map((todo, index) => (
+            {todos?.map((todo, index) => (
                 <SingleToDo 
                   index={index}
                   todo={todo}
@@ -49,7 +47,7 @@ export const ToDoList: React.FC<listProps> = ({
       <Droppable droppableId='TodosRemove'>
         {(provided, snapshot) => (
             <div 
-              className={`todos remove  ${snapshot.isDraggingOver? "dragremove" : ""}`}
+              className={`todos remove  ${snapshot.isDraggingOver ? "dragremove" : ""}`}
               ref={provided.innerRef} 
               {...provided.droppableProps}  
             >
@@ -57,7 +55,7 @@ export const ToDoList: React.FC<listProps> = ({
               Completed Tasks
             </span>
             {
-            completedTodos.map((todo) => (
+            completedTodos?.map((todo, index) => (
               <SingleToDo 
                 index={index}
                 todo={todo}
